@@ -1,6 +1,8 @@
+import 'package:clean_architecture/2_application/pages/advice/advice_page.dart';
 import 'package:clean_architecture/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '2_application/core/services/theme_service.dart';
 
 void main() {
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
               themeService.isDarkModeOn ? ThemeMode.dark : ThemeMode.light,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
-          home: const Placeholder(),
+          home: const AdviserPageWrapperProvider(),
         );
       },
     );
