@@ -14,7 +14,8 @@ class AdviserCubit extends Cubit<AdviserCubitState> {
     debugPrint("fake get advice triggered");
     await Future.delayed(const Duration(seconds: 3), () {});
     debugPrint("Thank you got the advice");
-    // emit(AdviserStateLoaded(advice: "test advice to test blog"));
-    emit(const AdviserStateError(errorMessage: "hey something went wrong!"));
+    // emit(AdviserCubitStateLoaded(advice: "test advice to test blog"));
+    emit(const AdviserCubitStateError(
+        errorMessage: "hey something went wrong!"));
   }
 }

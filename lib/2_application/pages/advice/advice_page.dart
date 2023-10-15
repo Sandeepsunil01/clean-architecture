@@ -1,5 +1,6 @@
 import 'package:clean_architecture/2_application/core/services/theme_service.dart';
 import 'package:clean_architecture/2_application/pages/advice/bloc/adviser_bloc.dart';
+import 'package:clean_architecture/2_application/pages/advice/cubit/adviser_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -13,8 +14,8 @@ class AdviserPageWrapperProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AdviserBloc>(
-      create: (context) => AdviserBloc(),
+    return BlocProvider<AdviserCubit>(
+      create: (context) => AdviserCubit(),
       child: const AdvicePage(),
     );
   }
@@ -48,20 +49,20 @@ class AdvicePage extends StatelessWidget {
           children: [
             Expanded(
               child: Center(
-                child: BlocBuilder<AdviserBloc, AdviserState>(
+                child: BlocBuilder<AdviserCubit, AdviserCubitState>(
                   builder: (context, state) {
                     if (state is AdviserInitial) {
                       return Text(
                         "Your Advice is waiting",
                         style: themeData.textTheme.headlineSmall,
                       );
-                    } else if (state is AdviserStateLoading) {
+                    } else if (state is AdviserCubitStateLoading) {
                       return CircularProgressIndicator(
                         color: themeData.colorScheme.secondary,
                       );
-                    } else if (state is AdviserStateLoaded) {
+                    } else if (state is AdviserCubitStateLoaded) {
                       return AdviceField(advice: state.advice);
-                    } else if (state is AdviserStateError) {
+                    } else if (state is AdviserCubitStateError) {
                       return ErrorMessage(message: state.errorMessage);
                     } else {
                       return const SizedBox();

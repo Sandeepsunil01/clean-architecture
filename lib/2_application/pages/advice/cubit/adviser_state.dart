@@ -11,19 +11,19 @@ class AdviserCubitInitial extends AdviserCubitState {}
 
 class AdviserCubitStateLoading extends AdviserCubitState {}
 
-class AdviserStateLoaded extends AdviserCubitState {
+class AdviserCubitStateLoaded extends AdviserCubitState {
   final String advice;
 
-  const AdviserStateLoaded({required this.advice});
+  const AdviserCubitStateLoaded({required this.advice});
 
   @override
   List<Object?> get props => [advice];
 }
 
-class AdviserStateError extends AdviserCubitState {
+class AdviserCubitStateError extends AdviserCubitState {
   final String errorMessage;
 
-  const AdviserStateError({required this.errorMessage});
+  const AdviserCubitStateError({required this.errorMessage});
 
   @override
   List<Object?> get props => [errorMessage];
