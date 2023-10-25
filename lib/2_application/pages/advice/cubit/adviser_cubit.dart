@@ -10,8 +10,8 @@ const generalFailureMessage = "Something went wrong. Please try again";
 const cacheFailureMessage = "Data not cached. Please try again";
 
 class AdviserCubit extends Cubit<AdviserCubitState> {
-  AdviserCubit() : super(AdviserCubitInitial());
-  final AdviceUseCases adviceUseCases = AdviceUseCases();
+  AdviserCubit({required this.adviceUseCases}) : super(AdviserCubitInitial());
+  final AdviceUseCases adviceUseCases;
   // This can also user other use cases;
 
   void adviceRequested() async {

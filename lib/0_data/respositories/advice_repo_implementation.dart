@@ -7,8 +7,8 @@ import '../../1_domain/repositories/repos.dart';
 import '../exceptions/exceptions.dart';
 
 class AdviceRepoImplementaion implements AdviceRepos {
-  final AdviceRemoteDataSource adviceRemoteDataSource =
-      AdviceRemoteDataSourceImpl();
+  final AdviceRemoteDataSource adviceRemoteDataSource;
+  AdviceRepoImplementaion({required this.adviceRemoteDataSource});
 
   @override
   Future<Either<Failure, AdviceEntity>> getAdviceFromDataSource() async {

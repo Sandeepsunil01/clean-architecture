@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
+import '../../../injection.dart';
 import 'widgets/advice_field.dart';
 import 'widgets/custom_widget.dart';
 import 'widgets/error_message.dart';
@@ -15,7 +16,7 @@ class AdviserPageWrapperProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AdviserCubit>(
-      create: (context) => AdviserCubit(),
+      create: (context) => serviceLocator<AdviserCubit>(),
       child: const AdvicePage(),
     );
   }
