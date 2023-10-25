@@ -4,6 +4,7 @@ import 'package:clean_architecture/1_domain/failure/failures.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../1_domain/repositories/repos.dart';
+import '../exceptions/exceptions.dart';
 
 class AdviceRepoImplementaion implements AdviceRepos {
   final AdviceRemoteDataSource adviceRemoteDataSource =
@@ -11,7 +12,13 @@ class AdviceRepoImplementaion implements AdviceRepos {
 
   @override
   Future<Either<Failure, AdviceEntity>> getAdviceFromDataSource() async {
-    final result = await adviceRemoteDataSource.getRandomAdviceFromApi();
-    return right(result);
+    try {
+      final result = await adviceRemoteDataSource.getRandomAdviceFromApi();
+      return right(result);
+    } on ServerExceptions catch (_) {
+      return left(ServerFailure());
+    } catch (e) {
+      return left(GeneralFailure());
+    }
   }
 }
