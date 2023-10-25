@@ -1,6 +1,7 @@
 import 'package:clean_architecture/1_domain/entities/advice_entity.dart';
+import 'package:equatable/equatable.dart';
 
-class AdviceModel extends AdviceEntity {
+class AdviceModel extends AdviceEntity with EquatableMixin {
   const AdviceModel({required String advice, required int id})
       : super(advice: advice, id: id);
 
