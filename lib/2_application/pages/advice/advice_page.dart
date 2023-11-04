@@ -72,13 +72,7 @@ class AdvicePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-                height: 200,
-                child: Center(
-                    child: CustomButton(
-                  onTap: () =>
-                      BlocProvider.of<AdviserCubit>(context).adviceRequested(),
-                ))),
+            const SizedBox(height: 200, child: Center(child: CustomButton())),
           ],
         ),
       ),

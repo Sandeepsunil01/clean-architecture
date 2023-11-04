@@ -22,7 +22,8 @@ class CustomButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Text(
               "Give me Advice",
-              style: themeData.textTheme.headlineSmall,
+              style: themeData.textTheme.headlineSmall
+                  ?.copyWith(color: onTap == null ? Colors.grey : Colors.black),
             ),
           ),
         ),
