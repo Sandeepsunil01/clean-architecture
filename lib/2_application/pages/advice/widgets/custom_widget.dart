@@ -1,17 +1,14 @@
-import 'package:clean_architecture/2_application/pages/advice/cubit/adviser_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key});
+  final Function()? onTap;
+  const CustomButton({super.key, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     return InkResponse(
-      onTap: () {
-        BlocProvider.of<AdviserCubit>(context).adviceRequested();
-      },
+      onTap: onTap,
       child: Material(
         elevation: 20,
         borderRadius: BorderRadius.circular(15),
@@ -24,7 +21,8 @@ class CustomButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Text(
               "Give me Advice",
-              style: themeData.textTheme.headlineSmall,
+              style: themeData.textTheme.headlineSmall
+                  ?.copyWith(color: onTap == null ? Colors.grey : Colors.black),
             ),
           ),
         ),
